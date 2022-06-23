@@ -32,6 +32,15 @@
 
 
     http://localhost:8000/:id
+    
+    
+    ## Login /
+
+    you can access the API from the browser by typing the following URL:
+
+    http://localhost:8000/login
+  
+
 
 
 ## POST /
