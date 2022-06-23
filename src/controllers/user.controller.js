@@ -2,13 +2,14 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
+
+// Generate a new token for the user
 const newToken = (user) => {
     return jwt.sign({ user }, process.env.JWT_SECRET);
 };
 
 
-//  Register a new token
-
+//  Register a new token for the user
 const register = async function(req, res) {
     try {
         var user = await User.findOne({ email : req.body.email }).lean().exec();
@@ -30,8 +31,7 @@ const register = async function(req, res) {
     }
 };
 
-
-    //  Login code 
+//  Login code for the user
 
     const login = async(req, res) => {
         try {
