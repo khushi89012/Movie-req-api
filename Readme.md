@@ -17,6 +17,13 @@
 
 ### Run the tests
 
+
+### For Login and Signup API using POST method
+
+    http://localhost:8000/login
+    http://localhost:8000/register
+
+
 ## GET /
 
     you can access the API from the browser by typing the following URL:
@@ -32,15 +39,6 @@
 
 
     http://localhost:8000/:id
-    
-    
-    ## Login /
-
-    you can access the API from the browser by typing the following URL:
-
-    http://localhost:8000/login
-  
-
 
 
 ## POST /
