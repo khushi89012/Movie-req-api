@@ -6,7 +6,8 @@ var authenticate = require('../middleware/authenticate')
 
 require('dotenv').config();
 
-//Foe fetching directly from movie api
+//For fetching data directly from movie api
+
 router.get("/fetch", async (req, res) => {
     let api = process.env.API_KEY;
     let page = req.query.page;
@@ -19,6 +20,8 @@ router.get("/fetch", async (req, res) => {
             "Content-Type": "application/json"
         }
     }
+    
+    //fetching the data using request
 
     request(url, options, (err, response, body) => {
         if (err) {
@@ -44,19 +47,18 @@ router.get("/fetch", async (req, res) => {
     const options = {unique:true}
     res.send(arr)
             Movie.insertMany(arr)
-            // res.send(arr)
+          
           
         }
     })
 
-    // res.status(200).send(body)
 })
 
 
 
 
 
-
+// this route will get all the movies from the database
 
 router.get("/", async (req, res) => {
 
@@ -71,6 +73,9 @@ router.get("/", async (req, res) => {
 
 
 
+// this route will post data to the database
+
+
 router.post("/", authenticate,async (req, res) => {
     try {
         const movie = await Movie.create(req.body)
@@ -80,6 +85,10 @@ router.post("/", authenticate,async (req, res) => {
         res.status(500).send(err.message)
     }
 })
+
+
+
+// this route will get a single movie from the database
 
 router.get("/:id",authenticate,async(req,res)=>{
     try{
@@ -93,6 +102,8 @@ router.get("/:id",authenticate,async(req,res)=>{
 })
 
 
+
+// this route will add rating in the movie
 
  router.put("/rating/:id",authenticate,async(req,res)=>{
 
