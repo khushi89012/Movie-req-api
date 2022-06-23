@@ -1,9 +1,16 @@
+// dependencies
 const express = require('express');
-const Movie = require('../models/movie.model')
 const router = express.Router();
 const request = require('request');
+
+// import the movie model
+const Movie = require('../models/movie.model')
+
+// import the authenticate middleware
 var authenticate = require('../middleware/authenticate')
 
+
+// for accessing the environment variables
 require('dotenv').config();
 
 //For fetching data directly from movie api
@@ -21,7 +28,7 @@ router.get("/fetch", async (req, res) => {
         }
     }
     
-    //fetching the data using request
+    //requesting the data from the api
 
     request(url, options, (err, response, body) => {
         if (err) {
@@ -46,6 +53,8 @@ router.get("/fetch", async (req, res) => {
             console.log(arr)
     const options = {unique:true}
     res.send(arr)
+
+    //saving the data to the database using the insertMany method
             Movie.insertMany(arr)
           
           
